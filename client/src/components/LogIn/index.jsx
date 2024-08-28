@@ -46,12 +46,12 @@ const LogIn = ({ isModalOpen, closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
       const url = loginRefugio
         ? 'https://no-code-backend-sn9i.onrender.com/api/refugios/login_refugios'
         : 'https://no-code-backend-sn9i.onrender.com/api/users/login';
-
+  
       helpHttp()
         .post(url, {
           body: loginForm,
@@ -62,8 +62,12 @@ const LogIn = ({ isModalOpen, closeModal }) => {
         })
         .then((response) => {
           if (response.token && (response.userId || response.refugioId)) {
-            
-            login(response.token, response.userId, response.rol|| response.refugioId, loginRefugio ? 'refugioId' : 'userId');
+            // Determinamos el ID y el rol (solo para usuarios)
+            const id = loginRefugio ? response.refugioId : response.userId;
+            const role = loginRefugio ? null : response.rol;  // Si es refugio, no se guarda el rol
+  
+            // Llamamos a la función login con los parámetros adecuados
+            login(response.token, id, role, loginRefugio ? 'refugioId' : 'userId');
             loginsuccess();
             closeModal();
           } else {
@@ -76,6 +80,8 @@ const LogIn = ({ isModalOpen, closeModal }) => {
         });
     }
   };
+  
+  
 
   const registerForm = () => {
     setIsRegister(false); 
@@ -132,7 +138,7 @@ const LogIn = ({ isModalOpen, closeModal }) => {
                 </div>
                 <p>
                   ¿No tienes una cuenta?
-                  <span onClick={registerForm}> Inscribirte</span>
+                  <span onClick={registerForm}> Registrarse</span>
                 </p>
                 <p>
                   {loginRefugio ? (

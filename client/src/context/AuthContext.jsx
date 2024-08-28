@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [userId, setUserId] = useState(localStorage.getItem('userId') || null);
   const [refugioId, setRefugioId] = useState(localStorage.getItem('refugioId') || null);
   const [user, setUser] = useState(null);
-  const [role, setRole] = useState(localStorage.getItem('role') || null); // Nuevo estado para el rol
+  const [role, setRole] = useState(localStorage.getItem('role') || null);
 
   useEffect(() => {
     if (token && (userId || refugioId)) {
@@ -35,20 +35,24 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = (newToken, id, role) => {
+  const login = (newToken, id, roleOrId, loginType) => {
     setIsAuth(true);
     setToken(newToken);
-    if (role === 'refugioId') {
+
+    if (loginType === 'refugioId') {
       setRefugioId(id);
       localStorage.setItem('refugioId', id);
+      setRole(null); // No guardamos rol si es un refugio
+      localStorage.removeItem('role'); // Limpiamos cualquier rol anterior en localStorage
     } else {
       setUserId(id);
       localStorage.setItem('userId', id);
+      setRole(roleOrId); // Guardamos el rol si es un usuario
+      localStorage.setItem('role', roleOrId);
     }
-    setRole(role); // Guardar el rol en el estado
+
     localStorage.setItem('isAuth', true);
     localStorage.setItem('token', newToken);
-    localStorage.setItem('role', role); // Guardar el rol en el localStorage
     fetchUserData(id);
   };
 
@@ -57,13 +61,13 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setUserId(null);
     setRefugioId(null);
-    setRole(null); // Limpiar el rol
+    setRole(null);
     setUser(null);
     localStorage.removeItem('isAuth');
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('refugioId');
-    localStorage.removeItem('role'); // Limpiar el rol del localStorage
+    localStorage.removeItem('role');
   };
 
   return (
