@@ -1,0 +1,12 @@
+/* Estilo del contenedor del formulario */
+.login__form-container,
+.register-container {
+  overflow: hidden; 
+}
+
+/* Estilo del formulario */
+.login__form-form,
+.register-container form {
+  width: 100%;
+  box-sizing: border-box;
+}

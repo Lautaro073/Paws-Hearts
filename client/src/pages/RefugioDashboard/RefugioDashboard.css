@@ -1,0 +1,80 @@
+.dashboard .container {
+    min-height: 40vh;
+  }
+  .container.flex-column {
+    width: 100%;
+  }
+  .dashboard {
+    padding: 2rem 0;
+    background-color: var(--main-color);
+  }
+  .dashboard h2 {
+    color: var(--action-color);
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  .formularios {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .formularios th,
+  .formularios td {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    color: var(--text-color);
+  }
+  
+  .formularios th {
+    background-color: var(--light-black);
+    color: var(--text-color);
+  }
+  
+  .formularios tr:nth-child(even) {
+    background-color: var(--dark-green);
+  }
+  
+  .mascota-foto {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5%;
+  }
+  
+  /* Button styles */
+  .action-btn,
+  .secondary-btn {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    color: var(--main-color);
+    font-family: var(--title-font);
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .action-btn {
+    background-color: var(--text-color);
+  }
+  
+  .action-btn:hover {
+    background-color: var(--action-color);
+    transform: scale(1.04);
+    transition: all 200ms;
+  }
+  
+  .secondary-btn {
+    background-color: var(--action-color);
+    color: var(--main-color);
+    font-weight: 600;
+  }
+  
+  .secondary-btn:hover {
+    transform: scale(1.04);
+    transition: all 200ms;
+  }
+  

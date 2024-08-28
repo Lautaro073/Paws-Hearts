@@ -1,0 +1,113 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+  padding: 2rem;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.admin-dashboard h1 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  margin-top: 8.5vh;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 2rem;
+  background-color: var(--input-background);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--action-color);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--action-color);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  background-color: var(--main-color);
+  border: 1px solid var(--light-black);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list button {
+  background-color: var(--action-color);
+  color: var(--main-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 200ms, transform 200ms;
+}
+
+.list button:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.02);
+}
+
+.modify-form {
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.modify-form h2 {
+  font-size: 1.5rem;
+  color: var(--action-color);
+  margin-bottom: 1rem;
+}
+
+.modify-form input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--light-black);
+  border-radius: 5px;
+  background-color: var(--input-background);
+  color: var(--input-text);
+}
+
+.modify-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--action-color);
+  color: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 200ms, transform 200ms;
+}
+
+.modify-form button:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.02);
+}
